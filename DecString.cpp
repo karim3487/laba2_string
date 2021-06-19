@@ -22,11 +22,17 @@ DecString::DecString(const char *charHextStringPtr) : String(charHextStringPtr) 
 //конструктор, принимающий 1 символ Си-строки
 DecString::DecString(char symbolDecString) : String(symbolDecString) {
     objectType = '3';
+    countConstructorCString++;
+    cout << "Количество вызовов конструктора принимающего Си-строку: " << countConstructorCString << endl;
+
 }
 
 //конструктор копирования
 DecString::DecString(const DecString &copyIdStr) : String(copyIdStr) {
     objectType = '3';
+    countConstructorCString++;
+    cout << "Количество вызовов конструктора принимающего Си-строку: " << countConstructorCString << endl;
+
 }
 
 DecString::~DecString() {}

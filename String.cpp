@@ -13,16 +13,16 @@ String::String() {
     stringLength = 0;
 }
 
-String::String(const String& copyStr) //конструктор копирования
+String::String(const String& copyStr) //РєРѕРЅСЃС‚СЂСѓРєС‚РѕСЂ РєРѕРїРёСЂРѕРІР°РЅРёСЏ
 {
     objectType = '1';
     stringPtr = copyStr.stringPtr;
     stringLength = copyStr.stringLength;
     countCopyConstructor++;
-    cout << "Количество вызовов конструктора копирования: " << countCopyConstructor << endl;
+    cout << "РљРѕР»РёС‡РµСЃС‚РІРѕ РІС‹Р·РѕРІРѕРІ РєРѕРЅСЃС‚СЂСѓРєС‚РѕСЂР° РєРѕРїРёСЂРѕРІР°РЅРёСЏ: " << countCopyConstructor << endl;
 }
 
-String::String(const char* charStringPtr) //конструктор, принимающий Си-строку
+String::String(const char* charStringPtr) //РєРѕРЅСЃС‚СЂСѓРєС‚РѕСЂ, РїСЂРёРЅРёРјР°СЋС‰РёР№ РЎРё-СЃС‚СЂРѕРєСѓ
 {
     objectType = '1';
     stringLength = strlen(charStringPtr);
@@ -31,38 +31,46 @@ String::String(const char* charStringPtr) //конструктор, принимающий Си-строку
         stringPtr[i] = charStringPtr[i];
     }
     stringPtr[stringLength] = '\0';
+    countConstructorCString++;
+    cout << "РљРѕР»РёС‡РµСЃС‚РІРѕ РІС‹Р·РѕРІРѕРІ РєРѕРЅСЃС‚СЂСѓРєС‚РѕСЂР° РїСЂРёРЅРёРјР°СЋС‰РµРіРѕ РЎРё-СЃС‚СЂРѕРєСѓ: " << countConstructorCString << endl;
 }
 
-String::String(char symbol) //конструктор, принимающий 1 символ Си-строки
+String::String(char symbol) //РєРѕРЅСЃС‚СЂСѓРєС‚РѕСЂ, РїСЂРёРЅРёРјР°СЋС‰РёР№ 1 СЃРёРјРІРѕР» РЎРё-СЃС‚СЂРѕРєРё
 {
     objectType = '1';
-    //длина строки = 2, один под символ и вторая под конец строки \0
+    //РґР»РёРЅР° СЃС‚СЂРѕРєРё = 2, РѕРґРёРЅ РїРѕРґ СЃРёРјРІРѕР» Рё РІС‚РѕСЂР°СЏ РїРѕРґ РєРѕРЅРµС† СЃС‚СЂРѕРєРё \0
     stringLength = 2;
     stringPtr = new char[stringLength];
     stringPtr[0] = symbol;
     stringPtr[1] = '\0';
+    countConstructorCSymbol++;
+    cout << "РљРѕР»РёС‡РµСЃС‚РІРѕ РІС‹Р·РѕРІРѕРІ РєРѕРЅСЃС‚СЂСѓРєС‚РѕСЂР° РїСЂРёРЅРёРјР°СЋС‰РµРіРѕ 1 СЃРёРјРІРѕР» РЎРё-СЃС‚СЂРѕРєРё: " << countConstructorCSymbol << endl;
 }
 
 String::~String() {
+    stringPtr = nullptr;
+    stringLength = 0;
+    countConstructorCSymbol++;
+    cout << "РљРѕР»РёС‡РµСЃС‚РІРѕ РІС‹Р·РѕРІРѕРІ РґРµСЃС‚СЂСѓРєС‚РѕСЂР°: " << countDestructor << endl;
 }
 
 
 
-String& String::operator=(const String& str)//перегрузка оператора сравнения
+String& String::operator=(const String& str)//РїРµСЂРµРіСЂСѓР·РєР° РѕРїРµСЂР°С‚РѕСЂР° СЃСЂР°РІРЅРµРЅРёСЏ
 {
     stringPtr = str.stringPtr;
     stringLength = str.stringLength;
-    return *this;//возвращение указателя на текущий объект
-    str.~String();//удаление строки ввода
+    return *this;//РІРѕР·РІСЂР°С‰РµРЅРёРµ СѓРєР°Р·Р°С‚РµР»СЏ РЅР° С‚РµРєСѓС‰РёР№ РѕР±СЉРµРєС‚
+    str.~String();//СѓРґР°Р»РµРЅРёРµ СЃС‚СЂРѕРєРё РІРІРѕРґР°
 }
 
-ostream& operator<<(ostream& out, const String& str) //перегрузка оператора поточного вывода
+ostream& operator<<(ostream& out, const String& str) //РїРµСЂРµРіСЂСѓР·РєР° РѕРїРµСЂР°С‚РѕСЂР° РїРѕС‚РѕС‡РЅРѕРіРѕ РІС‹РІРѕРґР°
 {
-    //посимвольное считывание строки
-    out << "Вывод строки: ";
+    //РїРѕСЃРёРјРІРѕР»СЊРЅРѕРµ СЃС‡РёС‚С‹РІР°РЅРёРµ СЃС‚СЂРѕРєРё
+    out << "Р’С‹РІРѕРґ СЃС‚СЂРѕРєРё: ";
     for (int i = 0; i < str.stringLength; i++) {
         cout << str.stringPtr[i];
     }
-    out << "\nДлина строки: " << str.stringLength << endl;
+    out << "\nР”Р»РёРЅР° СЃС‚СЂРѕРєРё: " << str.stringLength << endl;
     return out;
 }

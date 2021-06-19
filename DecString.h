@@ -19,6 +19,12 @@ private:
     char* strRev(char *str);
     bool isSmaller(char* num1, char* num2);
     void findDiff(char* _num1, char* _num2,char* _diff);
+
+protected:
+    static int countCopyConstructor;//количество вызовов конструкторов копирования
+    static int countConstructorCString;//количество вызовов конструкторов принимающих Си-Строку
+    static int countConstructorCSymbol;//количество вызовов конструкторов  принимающих 1 символ Си-Строки
+    static int countDestructor;//количество вызовов деструктора
 public:
     ~DecString();
 
