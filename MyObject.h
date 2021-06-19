@@ -19,5 +19,4 @@ protected:
 };
 
 
-
 #endif //LAB2_STRING_MYOBJECT_H

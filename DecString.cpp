@@ -17,25 +17,31 @@ DecString::DecString(const char *charHextStringPtr) : String(charHextStringPtr) 
         stringLength = 0;
         stringPtr = 0;
     }
+    countConstructorCString++;
+    cout << "Количество вызовов конструктора принимающего Си-строку: " << countConstructorCString << endl;
 }
 
 //конструктор, принимающий 1 символ Си-строки
 DecString::DecString(char symbolDecString) : String(symbolDecString) {
     objectType = '3';
-    countConstructorCString++;
-    cout << "Количество вызовов конструктора принимающего Си-строку: " << countConstructorCString << endl;
-
+    countConstructorCSymbol++;
+    cout << "Количество вызовов конструктора принимающего 1 символ Си-строки: " << countConstructorCSymbol << endl;
 }
 
 //конструктор копирования
 DecString::DecString(const DecString &copyIdStr) : String(copyIdStr) {
     objectType = '3';
-    countConstructorCString++;
-    cout << "Количество вызовов конструктора принимающего Си-строку: " << countConstructorCString << endl;
-
+    countCopyConstructor++;
+    cout << "Количество вызовов конструктора копирования: " << countCopyConstructor << endl;
 }
 
-DecString::~DecString() {}
+DecString::~DecString() {
+    stringPtr = nullptr;
+    stringLength = 0;
+    countDestructor++;
+    cout << "Количество вызовов деструктора: " << countDestructor << endl;
+
+}
 
 //проверка строки на соответствие dec-формату
 bool DecString::checkStringForDec(const char *stringPtr) {
@@ -57,8 +63,9 @@ bool DecString::checkStringForDec(const char *stringPtr) {
     }
 }
 
-DecString DecString::operator-(const DecString& a) {
-    DecString firstTempHexString(this->stringPtr), secondTempHexString(a), result('0');//использование конструктора копирования для получения значений
+DecString DecString::operator-(const DecString &a) {
+    DecString firstTempHexString(this->stringPtr), secondTempHexString(a), result(
+            '0');//использование конструктора копирования для получения значений
 
     findDiff(firstTempHexString.stringPtr, secondTempHexString.stringPtr, result.stringPtr);
 
@@ -70,14 +77,12 @@ bool DecString::operator<(const DecString &a) {
     return this->isSmaller(a.stringPtr, this->stringPtr);
 }
 
-char *DecString::strRev(char* str)
-{
-    char* p1, * p2;
+char *DecString::strRev(char *str) {
+    char *p1, *p2;
 
     if (!str || !*str)
         return str;
-    for (p1 = str, p2 = str + strlen(str) - 1; p2 > p1; ++p1, --p2)
-    {
+    for (p1 = str, p2 = str + strlen(str) - 1; p2 > p1; ++p1, --p2) {
         *p1 ^= *p2;
         *p2 ^= *p1;
         *p1 ^= *p2;
@@ -85,11 +90,10 @@ char *DecString::strRev(char* str)
     return str;
 }
 
-void DecString::findDiff(char* _num1, char* _num2,char* _diff) {
-    int sub,i,n1,n2,carry,addMinus = 0;
-    if (isSmaller(_num1, _num2))
-    {
-        char* temp = _num1;
+void DecString::findDiff(char *_num1, char *_num2, char *_diff) {
+    int sub, i, n1, n2, carry, addMinus = 0;
+    if (isSmaller(_num1, _num2)) {
+        char *temp = _num1;
         _num1 = _num2;
         _num2 = temp;
         addMinus = 1;
@@ -100,44 +104,36 @@ void DecString::findDiff(char* _num1, char* _num2,char* _diff) {
     strRev(_num1);
     strRev(_num2);
     carry = 0;
-    for (i=0; i<n2; ++i)
-    {
-        sub = ((_num1[i]-'0')-(_num2[i]-'0')-carry);
-        if (sub < 0)
-        {
+    for (i = 0; i < n2; ++i) {
+        sub = ((_num1[i] - '0') - (_num2[i] - '0') - carry);
+        if (sub < 0) {
             sub = sub + 10;
             carry = 1;
-        }
-        else
+        } else
             carry = 0;
 
         _diff[i] = sub + '0';
     }
-    for (i = n2; i < n1; ++i)
-    {
-        sub = ((_num1[i]-'0') - carry);
-        if (sub < 0)
-        {
+    for (i = n2; i < n1; ++i) {
+        sub = ((_num1[i] - '0') - carry);
+        if (sub < 0) {
             sub = sub + 10;
             carry = 1;
-        }
-        else
+        } else
             carry = 0;
 
         _diff[i] = sub + '0';
     }
-    if(addMinus)
-    {
+    if (addMinus) {
         _diff[strlen(_diff)] = '-';
-        _diff[strlen(_diff)+1] = '\0';
+        _diff[strlen(_diff) + 1] = '\0';
     }
-    _diff =  strRev(_diff);
+    _diff = strRev(_diff);
 }
 
-bool DecString::isSmaller(char* _num1, char* _num2)
-{
-    int n1 = strlen(_num1), n2 = strlen(_num2),i;
-    char num1,num2;
+bool DecString::isSmaller(char *_num1, char *_num2) {
+    int n1 = strlen(_num1), n2 = strlen(_num2), i;
+    char num1, num2;
 
     if (n1 < n2)
         return true;
@@ -149,7 +145,7 @@ bool DecString::isSmaller(char* _num1, char* _num2)
         num2 = _num2[i];
         if (num1 < num2) {
             return true;
-        }  else if (num1 > num2){
+        } else if (num1 > num2) {
             return false;
         }
     }

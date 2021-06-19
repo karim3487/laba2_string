@@ -5,36 +5,48 @@
 
 
 using namespace std;
+//РћРїСЂРµРґРµР»РµРЅРёРµ СЃС‚Р°С‚РёС‡РµСЃРєРёС… СЃС‡РµС‚С‡РёРєРѕРІ
+int String::countCopyConstructor = 0;
+int String::countDestructor = 0;
+int String::countConstructorCSymbol = 0;
+int String::countConstructorCString = 0;
 
-int String::countCopyConstructor = 0;//определение статического счётчика
+int IdString::countAnotherConstructor = 0;
+int IdString::countConstructorCString = 0;
+int IdString::countCopyConstructor = 0;
+int IdString::countDestructor = 0;
+
+int DecString::countCopyConstructor = 0;
+int DecString::countConstructorCSymbol = 0;
+int DecString::countConstructorCString = 0;
+int DecString::countDestructor = 0;
 int main() {
-    setlocale(LC_ALL, "Russian");
     char menuSelector, classObjectSelector, inputStringToClass[255], classMethodSelector;
     int countOfArrayPointers = 0, countOfObject = 0, currentObjectNumber = 0;
     String **charStringPtrArray = nullptr;
     String tempCharStr;
 
     while (countOfArrayPointers <= 0) {
-        cout << "Введите число указателей на класс <<Строка>>" << endl;
+        cout << "Р’РІРµРґРёС‚Рµ С‡РёСЃР»Рѕ СѓРєР°Р·Р°С‚РµР»РµР№ РЅР° РєР»Р°СЃСЃ <<РЎС‚СЂРѕРєР°>>" << endl;
         cin >> countOfArrayPointers;
 
     }
-    charStringPtrArray = new String *[countOfArrayPointers];//динамическое создание массива указателей
+    charStringPtrArray = new String *[countOfArrayPointers];//РґРёРЅР°РјРёС‡РµСЃРєРѕРµ СЃРѕР·РґР°РЅРёРµ РјР°СЃСЃРёРІР° СѓРєР°Р·Р°С‚РµР»РµР№
 
-    while (countOfObject < countOfArrayPointers)//вводим все значения в массив
+    while (countOfObject < countOfArrayPointers)//РІРІРѕРґРёРј РІСЃРµ Р·РЅР°С‡РµРЅРёСЏ РІ РјР°СЃСЃРёРІ
     {
-        cout << "Выберите создаваемый объекта класса из списка: " << endl;
-        cout << "1. <<Строка>>" << endl;
-        cout << "2. <<Строка-Идентефикатор>>" << endl;
-        cout << "3. <<Десятичная Строка>>" << endl;
+        cout << "Р’С‹Р±РµСЂРёС‚Рµ СЃРѕР·РґР°РІР°РµРјС‹Р№ РѕР±СЉРµРєС‚Р° РєР»Р°СЃСЃР° РёР· СЃРїРёСЃРєР°: " << endl;
+        cout << "1. <<РЎС‚СЂРѕРєР°>>" << endl;
+        cout << "2. <<РЎС‚СЂРѕРєР°-РРґРµРЅС‚РµС„РёРєР°С‚РѕСЂ>>" << endl;
+        cout << "3. <<Р”РµСЃСЏС‚РёС‡РЅР°СЏ РЎС‚СЂРѕРєР°>>" << endl;
         cin >> classObjectSelector;
-        cout << "Введите значение строки:" << endl;
+        cout << "Р’РІРµРґРёС‚Рµ Р·РЅР°С‡РµРЅРёРµ СЃС‚СЂРѕРєРё:" << endl;
         cin >> inputStringToClass;
-        switch (classObjectSelector)//в зависимости от пункта меню  создаём новый объект класса
+        switch (classObjectSelector)//РІ Р·Р°РІРёСЃРёРјРѕСЃС‚Рё РѕС‚ РїСѓРЅРєС‚Р° РјРµРЅСЋ  СЃРѕР·РґР°С‘Рј РЅРѕРІС‹Р№ РѕР±СЉРµРєС‚ РєР»Р°СЃСЃР°
         {
             case '1': {
                 charStringPtrArray[countOfObject] = new String(
-                        inputStringToClass);//динамическое создание объектов класса
+                        inputStringToClass);//РґРёРЅР°РјРёС‡РµСЃРєРѕРµ СЃРѕР·РґР°РЅРёРµ РѕР±СЉРµРєС‚РѕРІ РєР»Р°СЃСЃР°
                 break;
             }
             case '2': {
@@ -46,32 +58,32 @@ int main() {
                 break;
             }
             default:
-                cout << "Введенный объект класса отсутствует в списке. Повторите попытку" << endl;
+                cout << "Р’РІРµРґРµРЅРЅС‹Р№ РѕР±СЉРµРєС‚ РєР»Р°СЃСЃР° РѕС‚СЃСѓС‚СЃС‚РІСѓРµС‚ РІ СЃРїРёСЃРєРµ. РџРѕРІС‚РѕСЂРёС‚Рµ РїРѕРїС‹С‚РєСѓ" << endl;
                 break;
         }
         countOfObject++;
     }
     do {
         system("cls");
-        cout << "Число элементов в массиве указателей на базовый класс:" << countOfArrayPointers << endl;
-        cout << "Текущий указатель на объект класса: " << currentObjectNumber << endl;
-        cout << "Выберите пункт меню из перечисленных:" << endl;
-        cout << "1. Перейти к предыдущему указателю <-" << endl;
-        cout << "2. Перейти к следующему указателю ->" << endl;
-        cout << "3. Тестирование текущего объекта класса" << endl;
-        cout << "q. Выход" << endl;
+        cout << "Р§РёСЃР»Рѕ СЌР»РµРјРµРЅС‚РѕРІ РІ РјР°СЃСЃРёРІРµ СѓРєР°Р·Р°С‚РµР»РµР№ РЅР° Р±Р°Р·РѕРІС‹Р№ РєР»Р°СЃСЃ:" << countOfArrayPointers << endl;
+        cout << "РўРµРєСѓС‰РёР№ СѓРєР°Р·Р°С‚РµР»СЊ РЅР° РѕР±СЉРµРєС‚ РєР»Р°СЃСЃР°: " << currentObjectNumber << endl;
+        cout << "Р’С‹Р±РµСЂРёС‚Рµ РїСѓРЅРєС‚ РјРµРЅСЋ РёР· РїРµСЂРµС‡РёСЃР»РµРЅРЅС‹С…:" << endl;
+        cout << "1. РџРµСЂРµР№С‚Рё Рє РїСЂРµРґС‹РґСѓС‰РµРјСѓ СѓРєР°Р·Р°С‚РµР»СЋ <-" << endl;
+        cout << "2. РџРµСЂРµР№С‚Рё Рє СЃР»РµРґСѓСЋС‰РµРјСѓ СѓРєР°Р·Р°С‚РµР»СЋ ->" << endl;
+        cout << "3. РўРµСЃС‚РёСЂРѕРІР°РЅРёРµ С‚РµРєСѓС‰РµРіРѕ РѕР±СЉРµРєС‚Р° РєР»Р°СЃСЃР°" << endl;
+        cout << "q. Р’С‹С…РѕРґ" << endl;
         cin >> menuSelector;
         switch (menuSelector) {
             case '1': {
                 currentObjectNumber--;
                 if (currentObjectNumber < 0) {
                     currentObjectNumber = countOfArrayPointers -
-                                          1;//если мы выходим за рамки массива, присваиваем последнее значение, дабы не выйти за рамки массива
+                                          1;//РµСЃР»Рё РјС‹ РІС‹С…РѕРґРёРј Р·Р° СЂР°РјРєРё РјР°СЃСЃРёРІР°, РїСЂРёСЃРІР°РёРІР°РµРј РїРѕСЃР»РµРґРЅРµРµ Р·РЅР°С‡РµРЅРёРµ, РґР°Р±С‹ РЅРµ РІС‹Р№С‚Рё Р·Р° СЂР°РјРєРё РјР°СЃСЃРёРІР°
                 }
 
                 break;
             }
-            case '2': // если мы выходим за рамки массива, присваиваем 0, дабы не выйти за рамки массива.
+            case '2': // РµСЃР»Рё РјС‹ РІС‹С…РѕРґРёРј Р·Р° СЂР°РјРєРё РјР°СЃСЃРёРІР°, РїСЂРёСЃРІР°РёРІР°РµРј 0, РґР°Р±С‹ РЅРµ РІС‹Р№С‚Рё Р·Р° СЂР°РјРєРё РјР°СЃСЃРёРІР°.
             {
                 currentObjectNumber++;
                 if (currentObjectNumber >= countOfArrayPointers) {
@@ -81,26 +93,26 @@ int main() {
             }
             case '3':
                 system("cls");
-                switch (charStringPtrArray[currentObjectNumber]->getType())//определяем тип объекта и демонстрируем методы класса
+                switch (charStringPtrArray[currentObjectNumber]->getType())//РѕРїСЂРµРґРµР»СЏРµРј С‚РёРї РѕР±СЉРµРєС‚Р° Рё РґРµРјРѕРЅСЃС‚СЂРёСЂСѓРµРј РјРµС‚РѕРґС‹ РєР»Р°СЃСЃР°
                 {
                     case '1': {
-                        cout << "Демонстрация методов класса <<Строка>>:" << endl;
+                        cout << "Р”РµРјРѕРЅСЃС‚СЂР°С†РёСЏ РјРµС‚РѕРґРѕРІ РєР»Р°СЃСЃР° <<РЎС‚СЂРѕРєР°>>:" << endl;
                         String *charStr = charStringPtrArray[currentObjectNumber];
                         cout << *charStr << endl;
                         do {
-                            cout << "1. Задать новое значение для <<Строка>> " << endl;
-                            cout << "q. Выйти" << endl;
+                            cout << "1. Р—Р°РґР°С‚СЊ РЅРѕРІРѕРµ Р·РЅР°С‡РµРЅРёРµ РґР»СЏ <<РЎС‚СЂРѕРєР°>> " << endl;
+                            cout << "q. Р’С‹Р№С‚Рё" << endl;
                             cin >> classMethodSelector;
                             switch (classMethodSelector) {
                                 case '1':
-                                    cout << "Введите новое значение строки:" << endl;
+                                    cout << "Р’РІРµРґРёС‚Рµ РЅРѕРІРѕРµ Р·РЅР°С‡РµРЅРёРµ СЃС‚СЂРѕРєРё:" << endl;
                                     cin >> inputStringToClass;
                                     *charStr = inputStringToClass;
                                     break;
                                 case 'q':
                                     break;
                                 default:
-                                    cout << "Данный пункт меню отсутствует в списке, повторите попытку" << endl;
+                                    cout << "Р”Р°РЅРЅС‹Р№ РїСѓРЅРєС‚ РјРµРЅСЋ РѕС‚СЃСѓС‚СЃС‚РІСѓРµС‚ РІ СЃРїРёСЃРєРµ, РїРѕРІС‚РѕСЂРёС‚Рµ РїРѕРїС‹С‚РєСѓ" << endl;
                                     break;
                             }
                         } while (classMethodSelector != 'q');
@@ -109,25 +121,25 @@ int main() {
                     case '2': {
                         do {
                             system("cls");
-                            cout << "Демонстрация методов класса <<Строка-Идентефикатор>>" << endl;
-                            IdString *idString = static_cast<IdString *>(charStringPtrArray[currentObjectNumber]);//приводим указатель на базовый класс к классу IdString
+                            cout << "Р”РµРјРѕРЅСЃС‚СЂР°С†РёСЏ РјРµС‚РѕРґРѕРІ РєР»Р°СЃСЃР° <<РЎС‚СЂРѕРєР°-РРґРµРЅС‚РµС„РёРєР°С‚РѕСЂ>>" << endl;
+                            IdString *idString = static_cast<IdString *>(charStringPtrArray[currentObjectNumber]);//РїСЂРёРІРѕРґРёРј СѓРєР°Р·Р°С‚РµР»СЊ РЅР° Р±Р°Р·РѕРІС‹Р№ РєР»Р°СЃСЃ Рє РєР»Р°СЃСЃСѓ IdString
                             cout << *idString << endl;
-                            cout << "1. Задать новое значение для <<Строка-Идентефикатор> " << endl;
-                            cout << "2. Поиск последнего вхождения символа в строку" << endl;
-                            cout << "3. Сравнение строк операции '>'" << endl;
-                            cout << "4. Сравнение строк операции '<'" << endl;
-                            cout << "q. Выйти" << endl;
+                            cout << "1. Р—Р°РґР°С‚СЊ РЅРѕРІРѕРµ Р·РЅР°С‡РµРЅРёРµ РґР»СЏ <<РЎС‚СЂРѕРєР°-РРґРµРЅС‚РµС„РёРєР°С‚РѕСЂ> " << endl;
+                            cout << "2. РџРѕРёСЃРє РїРѕСЃР»РµРґРЅРµРіРѕ РІС…РѕР¶РґРµРЅРёСЏ СЃРёРјРІРѕР»Р° РІ СЃС‚СЂРѕРєСѓ" << endl;
+                            cout << "3. РЎСЂР°РІРЅРµРЅРёРµ СЃС‚СЂРѕРє РѕРїРµСЂР°С†РёРё '>'" << endl;
+                            cout << "4. РЎСЂР°РІРЅРµРЅРёРµ СЃС‚СЂРѕРє РѕРїРµСЂР°С†РёРё '<'" << endl;
+                            cout << "q. Р’С‹Р№С‚Рё" << endl;
                             cin >> classMethodSelector;
                             switch (classMethodSelector) {
                                 case '1': {
-                                    cout << "Введите новое значение строки:" << endl;
+                                    cout << "Р’РІРµРґРёС‚Рµ РЅРѕРІРѕРµ Р·РЅР°С‡РµРЅРёРµ СЃС‚СЂРѕРєРё:" << endl;
                                     cin >> inputStringToClass;
                                     *idString = inputStringToClass;
                                     break;
                                 }
                                 case '2': {
                                     char find;
-                                    cout << "Введите символ для поиска последнего вхождения: " << endl;
+                                    cout << "Р’РІРµРґРёС‚Рµ СЃРёРјРІРѕР» РґР»СЏ РїРѕРёСЃРєР° РїРѕСЃР»РµРґРЅРµРіРѕ РІС…РѕР¶РґРµРЅРёСЏ: " << endl;
                                     cin >> find;
                                     idString->lastOccurrence(find);
                                     getchar();
@@ -135,14 +147,14 @@ int main() {
                                     break;
                                 }
                                 case '3': {
-                                    cout << "Введите строку для Сравнения" << endl;
+                                    cout << "Р’РІРµРґРёС‚Рµ СЃС‚СЂРѕРєСѓ РґР»СЏ РЎСЂР°РІРЅРµРЅРёСЏ" << endl;
                                     cin >> inputStringToClass;
                                     IdString idTempString(inputStringToClass);
                                     IdString idStringCopy(*idString);
                                     *idString = idTempString > idStringCopy;
                                 }
                                 case '4': {
-                                    cout << "Введите строку для Сравнения" << endl;
+                                    cout << "Р’РІРµРґРёС‚Рµ СЃС‚СЂРѕРєСѓ РґР»СЏ РЎСЂР°РІРЅРµРЅРёСЏ" << endl;
                                     cin >> inputStringToClass;
                                     IdString idTempString(inputStringToClass);
                                     IdString idStringCopy(*idString);
@@ -151,7 +163,7 @@ int main() {
                                 case 'q':
                                     break;
                                 default:
-                                    cout << "Данный пункт меню отсутствует в списке, повторите попытку" << endl;
+                                    cout << "Р”Р°РЅРЅС‹Р№ РїСѓРЅРєС‚ РјРµРЅСЋ РѕС‚СЃСѓС‚СЃС‚РІСѓРµС‚ РІ СЃРїРёСЃРєРµ, РїРѕРІС‚РѕСЂРёС‚Рµ РїРѕРїС‹С‚РєСѓ" << endl;
                                     break;
                             }
                         } while (classMethodSelector != 'q');
@@ -160,23 +172,23 @@ int main() {
                     case '3': {
                         do {
                             system("cls");
-                            cout << "Демонстрация методов класса <<Десятичная строка>>" << endl;
-                            DecString *dec_str = static_cast<DecString *>(charStringPtrArray[currentObjectNumber]);//приводим указатель на базовый класс к классу Dec_string
+                            cout << "Р”РµРјРѕРЅСЃС‚СЂР°С†РёСЏ РјРµС‚РѕРґРѕРІ РєР»Р°СЃСЃР° <<Р”РµСЃСЏС‚РёС‡РЅР°СЏ СЃС‚СЂРѕРєР°>>" << endl;
+                            DecString *dec_str = static_cast<DecString *>(charStringPtrArray[currentObjectNumber]);//РїСЂРёРІРѕРґРёРј СѓРєР°Р·Р°С‚РµР»СЊ РЅР° Р±Р°Р·РѕРІС‹Р№ РєР»Р°СЃСЃ Рє РєР»Р°СЃСЃСѓ Dec_string
                             cout << *dec_str << endl;
-                            cout << "1. Задать новое значение для <<Десятичная строка>> " << endl;
-                            cout << "2. Вычитание одного <<Десятичного числа>> из другого" << endl;
-                            cout << "3. Сравнение одного <<Десятичного числа>> с другим" << endl;
-                            cout << "q. Выйти" << endl;
+                            cout << "1. Р—Р°РґР°С‚СЊ РЅРѕРІРѕРµ Р·РЅР°С‡РµРЅРёРµ РґР»СЏ <<Р”РµСЃСЏС‚РёС‡РЅР°СЏ СЃС‚СЂРѕРєР°>> " << endl;
+                            cout << "2. Р’С‹С‡РёС‚Р°РЅРёРµ РѕРґРЅРѕРіРѕ <<Р”РµСЃСЏС‚РёС‡РЅРѕРіРѕ С‡РёСЃР»Р°>> РёР· РґСЂСѓРіРѕРіРѕ" << endl;
+                            cout << "3. РЎСЂР°РІРЅРµРЅРёРµ РѕРґРЅРѕРіРѕ <<Р”РµСЃСЏС‚РёС‡РЅРѕРіРѕ С‡РёСЃР»Р°>> СЃ РґСЂСѓРіРёРј" << endl;
+                            cout << "q. Р’С‹Р№С‚Рё" << endl;
                             cin >> classMethodSelector;
                             switch (classMethodSelector) {
                                 case '1': {
-                                    cout << "Введите новое значение строки:" << endl;
+                                    cout << "Р’РІРµРґРёС‚Рµ РЅРѕРІРѕРµ Р·РЅР°С‡РµРЅРёРµ СЃС‚СЂРѕРєРё:" << endl;
                                     cin >> inputStringToClass;
                                     *dec_str = inputStringToClass;
                                     break;
                                 }
                                 case '2': {
-                                    cout << "Введите строку в десятичном формате для вычитания от заданной:" << endl;
+                                    cout << "Р’РІРµРґРёС‚Рµ СЃС‚СЂРѕРєСѓ РІ РґРµСЃСЏС‚РёС‡РЅРѕРј С„РѕСЂРјР°С‚Рµ РґР»СЏ РІС‹С‡РёС‚Р°РЅРёСЏ РѕС‚ Р·Р°РґР°РЅРЅРѕР№:" << endl;
                                     cin >> inputStringToClass;
                                     DecString decTempString(inputStringToClass);
                                     DecString decString(*dec_str);
@@ -184,7 +196,7 @@ int main() {
                                     break;
                                 }
                                 case '3': {
-                                    cout << "Введите строку в десятичном формате для сравнения с заданной:" << endl;
+                                    cout << "Р’РІРµРґРёС‚Рµ СЃС‚СЂРѕРєСѓ РІ РґРµСЃСЏС‚РёС‡РЅРѕРј С„РѕСЂРјР°С‚Рµ РґР»СЏ СЃСЂР°РІРЅРµРЅРёСЏ СЃ Р·Р°РґР°РЅРЅРѕР№:" << endl;
                                     cin >> inputStringToClass;
                                     DecString decTempString(inputStringToClass);
                                     DecString decString(*dec_str);
@@ -194,7 +206,7 @@ int main() {
                                 case 'q':
                                     break;
                                 default: {
-                                    cout << "Данный пункт меню отсутствует в списке, повторите попытку" << endl;
+                                    cout << "Р”Р°РЅРЅС‹Р№ РїСѓРЅРєС‚ РјРµРЅСЋ РѕС‚СЃСѓС‚СЃС‚РІСѓРµС‚ РІ СЃРїРёСЃРєРµ, РїРѕРІС‚РѕСЂРёС‚Рµ РїРѕРїС‹С‚РєСѓ" << endl;
                                     break;
                                 }
                             }
@@ -208,11 +220,11 @@ int main() {
             case 'q':
                 break;
             default:
-                cout << "Данный пункт меню отсутствует в списке, повторите попытку" << endl;
+                cout << "Р”Р°РЅРЅС‹Р№ РїСѓРЅРєС‚ РјРµРЅСЋ РѕС‚СЃСѓС‚СЃС‚РІСѓРµС‚ РІ СЃРїРёСЃРєРµ, РїРѕРІС‚РѕСЂРёС‚Рµ РїРѕРїС‹С‚РєСѓ" << endl;
                 break;
         }
         system("pause");
     } while (menuSelector != 'q');
-    //автоматически определять, что перед нами за объект класса
+    //Р°РІС‚РѕРјР°С‚РёС‡РµСЃРєРё РѕРїСЂРµРґРµР»СЏС‚СЊ, С‡С‚Рѕ РїРµСЂРµРґ РЅР°РјРё Р·Р° РѕР±СЉРµРєС‚ РєР»Р°СЃСЃР°
     return 0;
 }

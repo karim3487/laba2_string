@@ -38,7 +38,6 @@ IdString::IdString(const IdString &copyIdStr) : String(copyIdStr) //констр
     objectType = '2';
     countCopyConstructor++;
     cout << "Количество вызовов конструктора копирования: " << countCopyConstructor << endl;
-
 }
 
 IdString::IdString(const char *charIdStringPtr) : String(charIdStringPtr) //конструктор, принимающий Си-строку
@@ -55,7 +54,7 @@ IdString::IdString(const char *charIdStringPtr) : String(charIdStringPtr) //ко
 IdString::~IdString() {
     stringLength = 0;
     stringPtr = nullptr;
-    countConstructorCSymbol++;
+    countDestructor++;
     cout << "Количество вызовов деструктора: " << countDestructor << endl;
 }
 

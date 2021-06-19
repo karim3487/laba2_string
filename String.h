@@ -12,7 +12,7 @@ using namespace std;
 
 class String : public MyObject {
 protected:
-    char* stringPtr;//указатель на блок динамической памяти
+    char *stringPtr;//указатель на блок динамической памяти
     int stringLength;// длина строки
     static int countCopyConstructor;//количество вызовов конструкторов копирования
     static int countConstructorCString;//количество вызовов конструкторов принимающих Си-Строку
@@ -21,13 +21,16 @@ protected:
 
 public:
     String();
-    String(const String& copyStr); //конструктор копирования
-    String(const char* charStringPtr); //конструктор, принимающий Си-строку
+
+    String(const String &copyStr); //конструктор копирования
+    String(const char *charStringPtr); //конструктор, принимающий Си-строку
     String(char symbol); //конструктор, принимающий 1 символ Си-строки
     ~String();
-    friend std::ostream& operator<<(ostream& out, const String& str);
 
-    String& operator=(const String& str);
+    friend std::ostream &operator<<(ostream &out, const String &str);
+
+    String &operator=(const String &str);
+
     int getCharStringLength();
 };
 

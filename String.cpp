@@ -50,7 +50,7 @@ String::String(char symbol) //конструктор, принимающий 1 �
 String::~String() {
     stringPtr = nullptr;
     stringLength = 0;
-    countConstructorCSymbol++;
+    countDestructor++;
     cout << "Количество вызовов деструктора: " << countDestructor << endl;
 }
 
