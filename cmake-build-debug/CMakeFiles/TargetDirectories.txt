@@ -1,3 +1,3 @@
-F:/HomeWork/HomeWork/SD/lab2_string/cmake-build-debug/CMakeFiles/lab2_string.dir
-F:/HomeWork/HomeWork/SD/lab2_string/cmake-build-debug/CMakeFiles/edit_cache.dir
-F:/HomeWork/HomeWork/SD/lab2_string/cmake-build-debug/CMakeFiles/rebuild_cache.dir
+/home/karim/CLionProjects/lab2_String/laba2_string/cmake-build-debug/CMakeFiles/rebuild_cache.dir
+/home/karim/CLionProjects/lab2_String/laba2_string/cmake-build-debug/CMakeFiles/edit_cache.dir
+/home/karim/CLionProjects/lab2_String/laba2_string/cmake-build-debug/CMakeFiles/lab2_string.dir

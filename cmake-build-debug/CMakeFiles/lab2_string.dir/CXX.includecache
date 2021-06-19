@@ -6,17 +6,35 @@
 
 #IncludeRegexTransform: 
 
-F:/HomeWork/HomeWork/SD/lab2_string/MyObject.h
-
-F:/HomeWork/HomeWork/SD/lab2_string/String.cpp
+/home/karim/CLionProjects/lab2_String/laba2_string/DecString.h
+stdlib.h
+-
+stdio.h
+-
+string.h
+-
 iostream
 -
-cstring
+String.h
+/home/karim/CLionProjects/lab2_String/laba2_string/String.h
+
+/home/karim/CLionProjects/lab2_String/laba2_string/IdString.h
+String.h
+/home/karim/CLionProjects/lab2_String/laba2_string/String.h
+
+/home/karim/CLionProjects/lab2_String/laba2_string/MyObject.h
+
+/home/karim/CLionProjects/lab2_String/laba2_string/String.h
+MyObject.h
+/home/karim/CLionProjects/lab2_String/laba2_string/MyObject.h
+
+/home/karim/CLionProjects/lab2_String/laba2_string/main.cpp
+iostream
 -
 String.h
-F:/HomeWork/HomeWork/SD/lab2_string/String.h
-
-F:/HomeWork/HomeWork/SD/lab2_string/String.h
-MyObject.h
-F:/HomeWork/HomeWork/SD/lab2_string/MyObject.h
+/home/karim/CLionProjects/lab2_String/laba2_string/String.h
+IdString.h
+/home/karim/CLionProjects/lab2_String/laba2_string/IdString.h
+DecString.h
+/home/karim/CLionProjects/lab2_String/laba2_string/DecString.h
 

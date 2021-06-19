@@ -1,3 +1,1 @@
-"F:\Program Files\JetBrains\CLion 2020.3.2\bin\cmake\win\bin\cmake.exe" -E rm -f CMakeFiles\lab2_string.dir/objects.a
-C:\MinGW\bin\ar.exe cr CMakeFiles\lab2_string.dir/objects.a @CMakeFiles\lab2_string.dir\objects1.rsp
-C:\MinGW\bin\g++.exe -g -Wl,--whole-archive CMakeFiles\lab2_string.dir/objects.a -Wl,--no-whole-archive -o lab2_string.exe -Wl,--out-implib,liblab2_string.dll.a -Wl,--major-image-version,0,--minor-image-version,0 @CMakeFiles\lab2_string.dir\linklibs.rsp
+/usr/bin/c++ -g CMakeFiles/lab2_string.dir/main.cpp.o CMakeFiles/lab2_string.dir/DecString.cpp.o CMakeFiles/lab2_string.dir/IdString.cpp.o CMakeFiles/lab2_string.dir/MyObject.cpp.o CMakeFiles/lab2_string.dir/String.cpp.o -o lab2_string 

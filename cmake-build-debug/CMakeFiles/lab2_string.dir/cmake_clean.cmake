@@ -1,13 +1,11 @@
 file(REMOVE_RECURSE
-  "CMakeFiles/lab2_string.dir/DecString.cpp.obj"
-  "CMakeFiles/lab2_string.dir/IdString.cpp.obj"
-  "CMakeFiles/lab2_string.dir/MyObject.cpp.obj"
-  "CMakeFiles/lab2_string.dir/String.cpp.obj"
-  "CMakeFiles/lab2_string.dir/main.cpp.obj"
-  "lab2_string.exe"
-  "lab2_string.exe.manifest"
+  "CMakeFiles/lab2_string.dir/DecString.cpp.o"
+  "CMakeFiles/lab2_string.dir/IdString.cpp.o"
+  "CMakeFiles/lab2_string.dir/MyObject.cpp.o"
+  "CMakeFiles/lab2_string.dir/String.cpp.o"
+  "CMakeFiles/lab2_string.dir/main.cpp.o"
+  "lab2_string"
   "lab2_string.pdb"
-  "liblab2_string.dll.a"
 )
 
 # Per-language clean rules from dependency scanning.

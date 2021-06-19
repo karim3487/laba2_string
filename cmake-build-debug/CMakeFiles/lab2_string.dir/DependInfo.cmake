@@ -4,11 +4,11 @@ set(CMAKE_DEPENDS_LANGUAGES
   )
 # The set of files for implicit dependencies of each language:
 set(CMAKE_DEPENDS_CHECK_CXX
-  "F:/HomeWork/HomeWork/SD/lab2_string/DecString.cpp" "F:/HomeWork/HomeWork/SD/lab2_string/cmake-build-debug/CMakeFiles/lab2_string.dir/DecString.cpp.obj"
-  "F:/HomeWork/HomeWork/SD/lab2_string/IdString.cpp" "F:/HomeWork/HomeWork/SD/lab2_string/cmake-build-debug/CMakeFiles/lab2_string.dir/IdString.cpp.obj"
-  "F:/HomeWork/HomeWork/SD/lab2_string/MyObject.cpp" "F:/HomeWork/HomeWork/SD/lab2_string/cmake-build-debug/CMakeFiles/lab2_string.dir/MyObject.cpp.obj"
-  "F:/HomeWork/HomeWork/SD/lab2_string/String.cpp" "F:/HomeWork/HomeWork/SD/lab2_string/cmake-build-debug/CMakeFiles/lab2_string.dir/String.cpp.obj"
-  "F:/HomeWork/HomeWork/SD/lab2_string/main.cpp" "F:/HomeWork/HomeWork/SD/lab2_string/cmake-build-debug/CMakeFiles/lab2_string.dir/main.cpp.obj"
+  "/home/karim/CLionProjects/lab2_String/laba2_string/DecString.cpp" "/home/karim/CLionProjects/lab2_String/laba2_string/cmake-build-debug/CMakeFiles/lab2_string.dir/DecString.cpp.o"
+  "/home/karim/CLionProjects/lab2_String/laba2_string/IdString.cpp" "/home/karim/CLionProjects/lab2_String/laba2_string/cmake-build-debug/CMakeFiles/lab2_string.dir/IdString.cpp.o"
+  "/home/karim/CLionProjects/lab2_String/laba2_string/MyObject.cpp" "/home/karim/CLionProjects/lab2_String/laba2_string/cmake-build-debug/CMakeFiles/lab2_string.dir/MyObject.cpp.o"
+  "/home/karim/CLionProjects/lab2_String/laba2_string/String.cpp" "/home/karim/CLionProjects/lab2_String/laba2_string/cmake-build-debug/CMakeFiles/lab2_string.dir/String.cpp.o"
+  "/home/karim/CLionProjects/lab2_String/laba2_string/main.cpp" "/home/karim/CLionProjects/lab2_String/laba2_string/cmake-build-debug/CMakeFiles/lab2_string.dir/main.cpp.o"
   )
 set(CMAKE_CXX_COMPILER_ID "GNU")
 

@@ -1,7 +1,3 @@
-//
-// Created by Renat Kabirov on 2021-06-16.
-//
-
 #ifndef LAB2_STRING_DECSTRING_H
 #define LAB2_STRING_DECSTRING_H
 
