@@ -26,11 +26,15 @@ bool IdString::checkIdStringForCorrectSymbol(const char *stringPtr) //прове
 IdString::IdString() : String() //наследование конструкторов других классов
 {
     objectType = '2';
+    countAnotherConstructor++;
+    cout << "Количество вызовов конструкторов других классов" << countAnotherConstructor << endl;
 }
 
 IdString::IdString(const IdString &copyIdStr) : String(copyIdStr) //конструктор копирования
 {
     objectType = '2';
+    countCopyConstructor++;
+    cout << "Количество вызовов конструктора копирования: " << countCopyConstructor << endl;
 }
 
 IdString::IdString(const char *charIdStringPtr) : String(charIdStringPtr) //конструктор, принимающий Си-строку
@@ -38,16 +42,17 @@ IdString::IdString(const char *charIdStringPtr) : String(charIdStringPtr) //ко
     objectType = '2';
     if (!checkIdStringForCorrectSymbol(charIdStringPtr)) {
         stringLength = 0;
-        stringPtr = 0;
+        stringPtr = nullptr;
     }
-}
-
-IdString::IdString(char symbolIdString) : String(symbolIdString) //конструктор, принимающий 1 символ Си-строки
-{
-    objectType = '2';
+    countConstructorCString++;
+    cout << "Количество вызовов конструктора принимающего Си-строку: " << countConstructorCString << endl;
 }
 
 IdString::~IdString() {
+    stringLength = 0;
+    stringPtr = nullptr;
+    countDestructor++;
+    cout << "Количество вызовов деструктора: " << countDestructor << endl;
 }
 
 void IdString::lastOccurrence(char find) {

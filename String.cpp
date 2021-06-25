@@ -5,6 +5,8 @@
 
 using namespace std;
 
+string a = "asd";
+
 String::String() {
     objectType = '1';
     stringPtr = 0;
@@ -29,6 +31,8 @@ String::String(const char* charStringPtr) //конструктор, приним
         stringPtr[i] = charStringPtr[i];
     }
     stringPtr[stringLength] = '\0';
+    countConstructorCString++;
+    cout << "Количество вызовов конструктора принимающего Си-строку: " << countConstructorCString << endl;
 }
 
 String::String(char symbol) //конструктор, принимающий 1 символ Си-строки
@@ -39,22 +43,33 @@ String::String(char symbol) //конструктор, принимающий 1 �
     stringPtr = new char[stringLength];
     stringPtr[0] = symbol;
     stringPtr[1] = '\0';
+    countConstructorCSymbol++;
+    cout << "Количество вызовов конструктора принимающего 1 символ Си-строки: " << countConstructorCSymbol << endl;
 }
 
 String::~String() {
+    delete []stringPtr;
     stringPtr = nullptr;
     stringLength = 0;
-    //не освобождается память
+    countDestructor++;
+    cout << "Количество вызовов деструктора: " << countDestructor << endl;
 }
 
-
-
-String& String::operator=(const String& str)//перегрузка оператора сравнения
+String& String::operator=(const String& str)//перегрузка оператора присваивания
 {
-    stringPtr = str.stringPtr; //ошибка
-    stringLength = str.stringLength; //ошибка
-    return *this;//возвращение указателя на текущий объект
-    str.~String();//удаление строки ввода
+    if (str.stringPtr == nullptr) {
+        delete[] stringPtr;
+        stringPtr = nullptr;
+        stringLength = 0;
+        return *this;
+    }
+    if (this != &str) {
+        delete[] stringPtr;
+        stringPtr = new char[str.stringLength + 1];
+        strcpy(stringPtr, str.stringPtr);
+        stringLength = str.stringLength;
+    }
+    return *this;
 }
 
 ostream& operator<<(ostream& out, const String& str) //перегрузка оператора поточного вывода

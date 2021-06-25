@@ -5,8 +5,21 @@
 
 
 using namespace std;
+//Определение статических счетчиков
+int String::countCopyConstructor = 0;
+int String::countDestructor = 0;
+int String::countConstructorCSymbol = 0;
+int String::countConstructorCString = 0;
 
-int String::countCopyConstructor = 0;//определение статического счётчика
+int IdString::countAnotherConstructor = 0;
+int IdString::countConstructorCString = 0;
+int IdString::countCopyConstructor = 0;
+int IdString::countDestructor = 0;
+
+int DecString::countCopyConstructor = 0;
+int DecString::countConstructorCSymbol = 0;
+int DecString::countConstructorCString = 0;
+int DecString::countDestructor = 0;
 int main() {
     char menuSelector, classObjectSelector, inputStringToClass[255], classMethodSelector;
     int countOfArrayPointers = 0, countOfObject = 0, currentObjectNumber = 0;

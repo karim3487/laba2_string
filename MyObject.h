@@ -1,7 +1,3 @@
-//
-// Created by Renat Kabirov on 2021-06-16.
-//
-
 #ifndef LAB2_STRING_MYOBJECT_H
 #define LAB2_STRING_MYOBJECT_H
 
@@ -17,7 +13,6 @@ public:
 protected:
     int objectType;//тип объекта
 };
-
 
 
 #endif //LAB2_STRING_MYOBJECT_H
